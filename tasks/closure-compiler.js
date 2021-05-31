@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         done = this.async();
 
     // Check for closure path.
-    if (data.closurePath) {
+    if (data.jarPath || data.closurePath) {
       closurePath = data.closurePath;
     } else if (process.env.CLOSURE_PATH) {
       closurePath = process.env.CLOSURE_PATH;
@@ -28,7 +28,8 @@ module.exports = function(grunt) {
       grunt.log.error('' +
           '/!\\'.red +
           ' Set an environment variable called ' +
-          'CLOSURE_PATH'.red + ' or the build parameter' + 'closurePath'.red +
+          'CLOSURE_PATH'.red + ' or the build parameters ' + 'closurePath'.red +
+          + ' or ' + 'jarPath'.red +            
           ' and\nmake it point to your root install of Closure Compiler.' +
           '\n');
       return false;
